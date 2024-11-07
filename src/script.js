@@ -9,11 +9,11 @@ const weatherdata = document.querySelector("#weatherdata");
 const history = document.querySelector("#history");
 let isFirstLoad = true;
 
-const updateSearchHistory = (city) => {
+const updateSearchHistory = (pname) => {
     let historyList = JSON.parse(localStorage.getItem("searchHistory")) || [];
     
-    if (!historyList.includes(city)) {
-        historyList.unshift(city);  
+    if (!historyList.includes(pname)) {
+        historyList.unshift(pname);  
         historyList = historyList.slice(0, 6);
     }
 
@@ -23,30 +23,35 @@ const updateSearchHistory = (city) => {
 
 const renderSearchHistory = () => {
     const historyList = JSON.parse(localStorage.getItem("searchHistory")) || [];
+    
+    if (historyList.length === 0) return;
+
     history.innerHTML = "";
 
-    historyList.forEach(city => {
+    historyList.forEach(pname => {
         const historyItem = document.createElement("button");
-        historyItem.textContent = city;
+        historyItem.textContent = pname;
         historyItem.classList.add("historyItem", "bg-slate-200", "hover:bg-slate-300", "text-black", "py-1", "px-3", "rounded", "m-1");
         
-        const deleteHistory = document.createElement("button");
-        deleteHistory.innerHTML = `<span class="material-symbols-outlined">delete</span>&nbsp;Clear History`;
-        deleteHistory.classList.add("deleteHistory", "bg-slate-200", "text-black", "py-1", "px-3", "rounded", "flex" ,"m-1", "border", "border-black");
 
         historyItem.addEventListener("click", () => {
-            place.value = city;
+            place.value = pname;
             getGeolocation();
         });
 
+        history.appendChild(historyItem);
+    });
+
+        const deleteHistory = document.createElement("button");
+        deleteHistory.innerHTML = `<span class="material-symbols-outlined">delete</span>&nbsp;Clear History`;
+        deleteHistory.classList.add("deleteHistory", "bg-slate-200", "text-black", "py-1", "px-3", "rounded", "flex" ,"m-1", "border", "border-black");
         deleteHistory.addEventListener("click", ()=> {
             localStorage.clear();
             history.innerHTML = "";
         })
-
-        history.appendChild(historyItem);
         history.appendChild(deleteHistory);
-    });
+
+    
 };
 
 
@@ -91,7 +96,9 @@ const weatherDetails = (lat,lon, pname) => {
     .then(result => {
         console.log(result);
 
-        pname = result.city.name; 
+        if(!pname) {
+            pname = result.city.name; 
+        }
 
         const collectDays= [];
         const batchForecast = result.list.filter(terms => {
