@@ -6,7 +6,48 @@ const place = document.querySelector("#place");
 const currentweather = document.querySelector("#currentweather");
 const cardArea = document.querySelector("#weathercards");
 const weatherdata = document.querySelector("#weatherdata");
+const history = document.querySelector("#history");
+let isFirstLoad = true;
 
+const updateSearchHistory = (city) => {
+    let historyList = JSON.parse(localStorage.getItem("searchHistory")) || [];
+    
+    if (!historyList.includes(city)) {
+        historyList.unshift(city);  
+        historyList = historyList.slice(0, 6);
+    }
+
+    localStorage.setItem("searchHistory", JSON.stringify(historyList));
+    renderSearchHistory();
+};
+
+const renderSearchHistory = () => {
+    const historyList = JSON.parse(localStorage.getItem("searchHistory")) || [];
+    history.innerHTML = "";
+
+    historyList.forEach(city => {
+        const historyItem = document.createElement("button");
+        historyItem.textContent = city;
+        historyItem.classList.add("historyItem", "bg-slate-200", "hover:bg-slate-300", "text-black", "py-1", "px-3", "rounded", "m-1");
+        
+        const deleteHistory = document.createElement("button");
+        deleteHistory.innerHTML = `<span class="material-symbols-outlined">delete</span>&nbsp;Clear History`;
+        deleteHistory.classList.add("deleteHistory", "bg-slate-200", "text-black", "py-1", "px-3", "rounded", "flex" ,"m-1", "border", "border-black");
+
+        historyItem.addEventListener("click", () => {
+            place.value = city;
+            getGeolocation();
+        });
+
+        deleteHistory.addEventListener("click", ()=> {
+            localStorage.clear();
+            history.innerHTML = "";
+        })
+
+        history.appendChild(historyItem);
+        history.appendChild(deleteHistory);
+    });
+};
 
 
 const currentWeatherCard = (element,pname)=>{
@@ -77,7 +118,9 @@ const weatherDetails = (lat,lon, pname) => {
                 weatherCard(element);
             }
         });
-
+        if(!isFirstLoad)
+        updateSearchHistory(pname);
+        isFirstLoad = false;
     }).catch(error => alert(`Error:(${error})`))
 
 };
@@ -122,5 +165,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const defaultCity = "Jakarta";
     const lat = -6.2088;
     const lon = 106.8456; 
-    weatherDetails(lat, lon, defaultCity);   
+    weatherDetails(lat, lon, defaultCity);
+
+
+    renderSearchHistory();
 });
