@@ -18,7 +18,7 @@ const currentWeatherCard = (element,pname)=>{
     const icon = document.createElement("div");
     icon.id = "icon"
     icon.classList.add("max-w-28");
-    icon.innerHTML = `<img src="icons/${element.weather[0].icon}.png" class="w-14 justify-self-center" alt="weather-icon">
+    icon.innerHTML = `<img src="icons/${element.weather[0].icon}.png" class="w-14 justify-self-center drop-shadow-[0_0_10px_rgba(255,255,255,1)]" alt="weather-icon">
                     <h4 class="font-medium mt-3 capitalize">${element.weather[0].description}</h4>`;
     currentweather.appendChild(details);
     currentweather.appendChild(icon);
@@ -31,7 +31,7 @@ const weatherCard = (element)=>{
     card.id = "card";
     card.classList.add("bg-slate-500", "list-none", "text-white","py-5", "px-4","rounded","min-w-49", "max-[900px]:min-w-[11.5rem]", "max-[478px]:min-w-[12rem]", "max-[460px]:min-w-[11rem]", "max-[428px]:min-w-[10rem]", "max-[400px]:min-w-[9rem]", "max-[384px]:min-w-[8rem]", "max-[900px]:p-3.5", "max-[400px]:p-3", "max-[384px]:p-2","flex-wrap");
     card.innerHTML =  `<h3 class="font-bold text-2xl">${element.dt_txt.split(" ")[0]}</h3>
-                <img src="icons/${element.weather[0].icon}.png" class="w-14 max-w-16 mt-1.5" alt="weather-icon">
+                <img src="icons/${element.weather[0].icon}.png" class="w-14 max-w-16 mt-1.5 drop-shadow-[0_0_10px_rgba(255,255,255,0.6)]" alt="weather-icon">
                 <h4 class="font-medium mt-3">Temp: ${element.main.temp} °C</h4>
                 <h4 class="font-medium mt-3">Wind: ${element.wind.speed} M/S</h4>
                 <h4 class="font-medium mt-3">Humidity: ${element.main.humidity}%</h4>`;
@@ -54,7 +54,7 @@ const weatherDetails = (lat,lon, pname) => {
             const date = new Date(terms.dt_txt);
             const day = date.getDate();
             const hour = date.getHours();
-            if(!collectDays.includes(day) && (hour === 9 || hour === 12)){
+            if(!collectDays.includes(day) && (hour === 6 || hour === 9 || hour === 12 || hour === 15)){
                 collectDays.push(day) ;
                 return true;
             }
