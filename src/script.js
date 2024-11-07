@@ -1,10 +1,12 @@
 import api_key from './apikey.js';
 
 const search = document.querySelector("#search");
+const currentLocation = document.querySelector("#location");
 const place = document.querySelector("#place");
 const currentweather = document.querySelector("#currentweather");
 const cardArea = document.querySelector("#weathercards");
 const weatherdata = document.querySelector("#weatherdata");
+
 
 
 const currentWeatherCard = (element,pname)=>{
@@ -48,6 +50,7 @@ const weatherDetails = (lat,lon, pname) => {
     .then(result => {
         console.log(result);
 
+        pname = result.city.name; 
 
         const collectDays= [];
         const batchForecast = result.list.filter(terms => {
@@ -63,7 +66,6 @@ const weatherDetails = (lat,lon, pname) => {
         console.log(collectDays)
         console.log(batchForecast)
         
-        place.value="";
         cardArea.innerHTML= "";
         currentweather.innerHTML= "";
         weatherdata.classList.remove("hidden");
@@ -82,6 +84,7 @@ const weatherDetails = (lat,lon, pname) => {
 
 const getGeolocation = () => {
     const pname = place.value.trim();
+    place.value="";
     if(!pname) return;
     const URL = `https://api.openweathermap.org/geo/1.0/direct?q=${pname}&limit=1&appid=${api_key}`;
 
@@ -95,7 +98,25 @@ const getGeolocation = () => {
     .catch(error => alert(`Error:(${error})`))
 }
 
+const getCurrentLocation = () => {
+    navigator.geolocation.getCurrentPosition(
+        current => {
+                const { latitude, longitude } = current.coords;
+                weatherDetails(latitude, longitude);   
+
+            },
+        error => {
+            alert(`Failed to Fetch Location: [ ${error.message} ]`);
+        }
+    )
+};
+
 search.addEventListener("click", getGeolocation);
+currentLocation.addEventListener("click", getCurrentLocation);
+place.addEventListener("keyup", (e) => {
+    if(e.key === "Enter") {
+    getGeolocation();
+}})
 
 document.addEventListener("DOMContentLoaded", () => {
     const defaultCity = "Jakarta";
