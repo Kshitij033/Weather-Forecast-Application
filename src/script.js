@@ -65,9 +65,9 @@ const currentWeatherCard = (element,pname)=>{
     
     const icon = document.createElement("div");
     icon.id = "icon"
-    icon.classList.add("max-w-28");
+    icon.classList.add("max-w-28", "max-[496px]:ml-10", "flex", "flex-col", "justify-center","items-center");
     icon.innerHTML = `<img src="icons/${element.weather[0].icon}.png" class="w-14 justify-self-center drop-shadow-[0_0_10px_rgba(255,255,255,1)]" alt="weather-icon">
-                    <h4 class="font-medium mt-3 capitalize">${element.weather[0].description}</h4>`;
+                    <h4 class="font-medium mt-3 text-center capitalize">${element.weather[0].description}</h4>`;
     currentweather.appendChild(details);
     currentweather.appendChild(icon);
 
