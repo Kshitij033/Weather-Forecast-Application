@@ -626,6 +626,10 @@ video {
   margin-top: 0.75rem;
 }
 
+.inline {
+  display: inline;
+}
+
 .flex {
   display: flex;
 }
@@ -881,14 +885,6 @@ video {
 @media (max-width: 900px) {
   .max-\[900px\]\:min-w-\[11\.5rem\] {
     min-width: 11.5rem;
-  }
-
-  .max-\[900px\]\:min-w-\[11\.rem\] {
-    min-width: 11.rem;
-  }
-
-  .max-\[900px\]\:p-3 {
-    padding: 0.75rem;
   }
 
   .max-\[900px\]\:p-3\.5 {
