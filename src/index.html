@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="output.css">
+    <script src="script.js" type="module" defer></script>
+</head>
+<body class="bg-blue-100">
+    <header>
+        <h1 class="bg-blue-500 text-white font-bold text-3xl py-3.5 text-center">Weather Dashboard</h1>
+    </header>
+
+
+    <main>
+        <div class="flex gap-9 p-7 max-[880px]:flex-col" id="container">
+            <div class="min-w-96 max-[880px]:w-full" id="left-side">
+                <label for="place" class="font-bold text-lg pl-0.5 max-[880px]:text-xl">Enter a City Name</label><br>
+                <input type="text" class="w-full h-11 border border-solid border-slate-300 rounded px-3 mt-2.5 mb-5 text-lg" name="" id="place" placeholder="E.g. Brazil, Las Vegas, India.."><br>
+                <div class="mb-3" id="history">
+                    <button class="dropbtn">Recently Searched Places</button>
+                    <div id="myDropdown" class="dropdown-content flex flex-col h-18 pb-5 overflow-y-scroll">
+                        <a href="#">Link 1</a>
+                        <a href="#">Link 2</a>
+                        <a href="#">Link 3</a>
+                        <a href="#">Link 4</a>
+                        <a href="#">Link 5</a>
+                    </div>
+                </div>
+
+                <button class="w-full py-2.5 text-white rounded hover:bg-blue-600 bg-blue-500" id="search">Search</button>
+                <div class="relative flex items-center my-6">
+                    <div class="flex-grow border-t border-slate-300"></div>
+                    <span class="px-2 text-slate-500 bg-blue-100 mb-1">or</span>
+                    <div class="flex-grow border-t border-slate-300"></div>
+                </div>
+                  
+                <button class="w-full py-2.5 text-white rounded hover:bg-slate-600 bg-slate-500 " id="location">Use Current Location</button>
+            </div>
+            <div class="w-full" id="weatherdata">
+                <div class="bg-blue-500 text-white flex justify-between py-5 pr-16 pl-5 rounded" id="currentweather">
+                    <div id="details">
+                        <h2 class="font-bold text-2xl pr-5 min-w-40">London (2023-05-10)</h2>
+                        <h4 class="font-medium mt-3">Temperature: 19.10C</h4>
+                        <h4 class="font-medium mt-3">Wind: 4.31 M/S</h4>
+                        <h4 class="font-medium mt-3">Humidity: 79%</h4>
+                    </div>
+                    <div class="max-w-28" id="icon">
+                        <img src="http://www.psdgraphics.com/file/weather-icon.jpg" class="w-14 justify-self-center" alt="weather-icon">
+                        <h4 class="font-medium mt-3 capitalize">Moderate Rain</h4>
+                    </div>
+                </div>
+                <div class="" id="daysforcast">
+                    <h2 class="font-bold text-2xl my-5 ">5-Day Forecast</h2>
+                    <ul class="flex gap-5 flex-wrap" id="weathercard">
+                        <li class="bg-slate-500 list-none text-white py-5 px-4 rounded min-w-48 max-w-52 w-1/5 flex-wrap" id="card">
+                            <h3 class="font-bold text-2xl">(2023-05-10)</h3>
+                            <img src="http://www.psdgraphics.com/file/weather-icon.jpg" class="w-14 max-w-16 mt-1.5" alt="weather-icon">
+                            <h4 class="font-medium mt-3">Temp: 19.10C</h4>
+                            <h4 class="font-medium mt-3">Wind: 4.31 M/S</h4>
+                            <h4 class="font-medium mt-3">Humidity: 79%</h4>    
+                        </li>
+                        <li class="bg-slate-500 list-none text-white py-5 px-4 rounded min-w-48 max-w-52 w-1/5 flex-wrap" id="card">
+                            <h3 class="font-bold text-2xl">(2023-05-10)</h3>
+                            <img src="http://www.psdgraphics.com/file/weather-icon.jpg" class="w-14 max-w-16 mt-1.5" alt="weather-icon">
+                            <h4 class="font-medium mt-3">Temp: 19.10C</h4>
+                            <h4 class="font-medium mt-3">Wind: 4.31 M/S</h4>
+                            <h4 class="font-medium mt-3">Humidity: 79%</h4>    
+                        </li>
+                        <li class="bg-slate-500 list-none text-white py-5 px-4 rounded min-w-48 max-w-52 w-1/5 flex-wrap" id="card">
+                            <h3 class="font-bold text-2xl">(2023-05-10)</h3>
+                            <img src="http://www.psdgraphics.com/file/weather-icon.jpg" class="w-14 max-w-16 mt-1.5" alt="weather-icon">
+                            <h4 class="font-medium mt-3">Temp: 19.10C</h4>
+                            <h4 class="font-medium mt-3">Wind: 4.31 M/S</h4>
+                            <h4 class="font-medium mt-3">Humidity: 79%</h4>    
+                        </li>
+                        <li class="bg-slate-500 list-none text-white py-5 px-4 rounded min-w-48 max-w-52 w-1/5 flex-wrap" id="card">
+                            <h3 class="font-bold text-2xl">(2023-05-10)</h3>
+                            <img src="http://www.psdgraphics.com/file/weather-icon.jpg" class="w-14 max-w-16 mt-1.5" alt="weather-icon">
+                            <h4 class="font-medium mt-3">Temp: 19.10C</h4>
+                            <h4 class="font-medium mt-3">Wind: 4.31 M/S</h4>
+                            <h4 class="font-medium mt-3">Humidity: 79%</h4>    
+                        </li>
+                        <li class="bg-slate-500 list-none text-white py-5 px-4 rounded min-w-48 max-w-52 w-1/5 flex-wrap" id="card">
+                            <h3 class="font-bold text-2xl">(2023-05-10)</h3>
+                            <img src="http://www.psdgraphics.com/file/weather-icon.jpg" class="w-14 max-w-16 mt-1.5" alt="weather-icon">
+                            <h4 class="font-medium mt-3">Temp: 19.10C</h4>
+                            <h4 class="font-medium mt-3">Wind: 4.31 M/S</h4>
+                            <h4 class="font-medium mt-3">Humidity: 79%</h4>    
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+
+    <footer>
+
+    </footer>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
