@@ -2,7 +2,28 @@ import api_key from './apikey.js';
 
 const search = document.querySelector("#search");
 const place = document.querySelector("#place");
+const currentweather = document.querySelector("#currentweather");
 const cardArea = document.querySelector("#weathercards");
+const weatherdata = document.querySelector("#weatherdata");
+
+
+const currentWeatherCard = (element,pname)=>{
+    const details = document.createElement("div");
+    details.id = "details";
+    details.innerHTML = `<h2 class="font-bold text-2xl pr-5 min-w-40">${pname} ${element.dt_txt.split(" ")[0]}</h2>
+                        <h4 class="font-medium mt-3">Temperature: ${element.main.temp} °C</h4>
+                        <h4 class="font-medium mt-3">Wind: ${element.wind.speed} M/S</h4>
+                        <h4 class="font-medium mt-3">Humidity: ${element.main.humidity}%</h4>`
+    
+    const icon = document.createElement("div");
+    icon.id = "icon"
+    icon.classList.add("max-w-28");
+    icon.innerHTML = `<img src="icons/${element.weather[0].icon}.png" class="w-14 justify-self-center" alt="weather-icon">
+                    <h4 class="font-medium mt-3 capitalize">${element.weather[0].description}</h4>`;
+    currentweather.appendChild(details);
+    currentweather.appendChild(icon);
+
+};
 
 
 const weatherCard = (element)=>{
@@ -33,7 +54,7 @@ const weatherDetails = (lat,lon, pname) => {
             const date = new Date(terms.dt_txt);
             const day = date.getDate();
             const hour = date.getHours();
-            if(!collectDays.includes(day) && (hour === 9)){
+            if(!collectDays.includes(day) && (hour === 9 || hour === 12)){
                 collectDays.push(day) ;
                 return true;
             }
@@ -44,9 +65,15 @@ const weatherDetails = (lat,lon, pname) => {
         
         place.value="";
         cardArea.innerHTML= "";
+        currentweather.innerHTML= "";
+        weatherdata.classList.remove("hidden");
 
-        batchForecast.forEach(element => {
-            weatherCard(element);
+        batchForecast.forEach((element, index) => {
+            if(index === 0) {
+                currentWeatherCard(element,pname);
+            } else {
+                weatherCard(element);
+            }
         });
 
     }).catch(error => alert(`Error:(${error})`))
