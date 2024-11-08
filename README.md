@@ -11,4 +11,4 @@ Features
 
 Technologies
 
-    JavaScript, OpenWeather API, LocalStorage, CSS (Grid and Flexbox).
+    JavaScript, Tailwind CSS, OpenWeather API.
