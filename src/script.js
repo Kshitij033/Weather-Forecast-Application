@@ -178,10 +178,17 @@ place.addEventListener("keyup", (e) => {
 //default dom loading and default searched place
 
 document.addEventListener("DOMContentLoaded", () => {
-    const defaultCity = "Tokyo";
-    const lat = 35.6895;
-    const lon = 139.6917; 
-    weatherDetails(lat, lon, defaultCity);
+    let historyList = JSON.parse(localStorage.getItem("searchHistory")) || [];
+    if(historyList.length>0){
+        const res = historyList[0];
+        place.value = res;
+        getGeolocation();
+    } else {
+        const defaultCity = "Tokyo";
+        const lat = 35.6895;
+        const lon = 139.6917; 
+        weatherDetails(lat, lon, defaultCity);
+    }
 
 
     renderSearchHistory();
