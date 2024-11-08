@@ -9,6 +9,8 @@ const weatherdata = document.querySelector("#weatherdata");
 const history = document.querySelector("#history");
 let isFirstLoad = true;
 
+//to update the search History and store it in localstorage
+
 const updateSearchHistory = (pname) => {
     let historyList = JSON.parse(localStorage.getItem("searchHistory")) || [];
     
@@ -20,6 +22,8 @@ const updateSearchHistory = (pname) => {
     localStorage.setItem("searchHistory", JSON.stringify(historyList));
     renderSearchHistory();
 };
+
+//to render the search History on the screen
 
 const renderSearchHistory = () => {
     const historyList = JSON.parse(localStorage.getItem("searchHistory")) || [];
@@ -54,6 +58,7 @@ const renderSearchHistory = () => {
     
 };
 
+// to create the banner current weather card
 
 const currentWeatherCard = (element,pname)=>{
     const details = document.createElement("div");
@@ -73,6 +78,7 @@ const currentWeatherCard = (element,pname)=>{
 
 };
 
+//to create the forecast cards
 
 const weatherCard = (element)=>{
     const card = document.createElement("li");
@@ -86,7 +92,7 @@ const weatherCard = (element)=>{
     cardArea.appendChild(card);
 };
 
-
+//to fetch the weather details based on latitude and longitude
 
 const weatherDetails = (lat,lon, pname) => {
     const URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=${api_key}`;
@@ -129,6 +135,8 @@ const weatherDetails = (lat,lon, pname) => {
 
 };
 
+//to get latitude and longitude and name of a place using users input
+
 const getGeolocation = () => {
     const pname = place.value.trim();
     place.value="";
@@ -158,12 +166,16 @@ const getCurrentLocation = () => {
     )
 };
 
+//enter detect
+
 search.addEventListener("click", getGeolocation);
 currentLocation.addEventListener("click", getCurrentLocation);
 place.addEventListener("keyup", (e) => {
     if(e.key === "Enter") {
     getGeolocation();
 }})
+
+//default dom loading and default searched place
 
 document.addEventListener("DOMContentLoaded", () => {
     const defaultCity = "Tokyo";

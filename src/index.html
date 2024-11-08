@@ -16,6 +16,8 @@
 
     <main class="flex-grow">
         <div class="grid grid-cols-2 min-[1000px]:grid-cols-3 gap-9 p-7 max-[900px]:grid-cols-1" id="container">
+
+            <!-- search/history/user location -->
             <div class="w-full min-w-64 max-[880px]:w-full" id="left-side">
                 <label for="place" class="font-bold text-lg pl-0.5 max-[880px]:text-xl">Enter a City Name</label><br>
                 <input type="text" class="w-full h-11 border border-solid border-slate-300 rounded px-3 mt-2.5 mb-5 text-lg" name="" id="place" placeholder="E.g. Tokyo, Cape Town, Sydney .."><br>
@@ -31,8 +33,10 @@
                   
                 <button class="w-full py-2.5 text-white rounded hover:bg-slate-600 bg-slate-500 " id="location">Use Current Location</button>
             </div>
+
+            <!-- weather(current weather and forecast cards) -->
             <div class="min-[1000px]:col-span-2 hidden " id="weatherdata">
-                <div class="bg-blue-500 hover:bg-blue-600 text-white flex gap-7 justify-between py-5 pr-16 pl-5 rounded" id="currentweather">
+                <div class="bg-blue-500 hover:bg-blue-600 text-white flex gap-5 justify-between py-5 pr-16 pl-5 rounded" id="currentweather">
                 </div>
                 <div class="" id="daysforcast">
                     <h2 class="font-bold text-2xl my-5 ">5-Day Forecast</h2>
@@ -46,8 +50,8 @@
     </main>
 
 
-
-    <footer class="flex px-7 py-3 bottom-0 justify-between w-full bg-slate-600 text-white font-semibold">
+    <!-- footer -->
+    <footer class="flex px-7 py-3 bottom-0 justify-between w-full bg-slate-600 text-white font-semibold gap-3">
         <p>&copy; 2024 | Designed by Kshitij Tripathi</p>
         <h1>Weather Dashboard</h1>
     </footer>
