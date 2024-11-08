@@ -8,13 +8,13 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <script src="script.js" type="module" defer></script>
 </head>
-<body class="bg-blue-100">
+<body class="bg-blue-100 flex flex-col min-h-screen">
     <header>
-        <h1 class="bg-blue-500 text-white font-bold text-3xl py-3.5 text-center">Weather Dashboard</h1>
+        <h1 class="bg-blue-600 text-white font-bold text-5xl py-5 text-center">Weather Dashboard</h1>
     </header>
 
 
-    <main>
+    <main class="flex-grow">
         <div class="grid grid-cols-2 min-[1000px]:grid-cols-3 gap-9 p-7 max-[900px]:grid-cols-1" id="container">
             <div class="w-full min-w-64 max-[880px]:w-full" id="left-side">
                 <label for="place" class="font-bold text-lg pl-0.5 max-[880px]:text-xl">Enter a City Name</label><br>
@@ -32,7 +32,7 @@
                 <button class="w-full py-2.5 text-white rounded hover:bg-slate-600 bg-slate-500 " id="location">Use Current Location</button>
             </div>
             <div class="min-[1000px]:col-span-2 hidden " id="weatherdata">
-                <div class="bg-blue-500 text-white flex gap-7 justify-between py-5 pr-16 pl-5 rounded" id="currentweather">
+                <div class="bg-blue-500 hover:bg-blue-600 text-white flex gap-7 justify-between py-5 pr-16 pl-5 rounded" id="currentweather">
                 </div>
                 <div class="" id="daysforcast">
                     <h2 class="font-bold text-2xl my-5 ">5-Day Forecast</h2>
@@ -47,8 +47,9 @@
 
 
 
-    <footer>
-
+    <footer class="flex px-7 py-3 bottom-0 justify-between w-full bg-slate-600 text-white font-semibold">
+        <p>&copy; 2024 | Designed by Kshitij Tripathi</p>
+        <h1>Weather Dashboard</h1>
     </footer>
 
 </body>

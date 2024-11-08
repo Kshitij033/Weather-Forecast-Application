@@ -77,7 +77,7 @@ const currentWeatherCard = (element,pname)=>{
 const weatherCard = (element)=>{
     const card = document.createElement("li");
     card.id = "card";
-    card.classList.add("bg-slate-500", "list-none", "text-white","py-5", "px-4", "text-center", "rounded","min-w-49", "max-[1034px]:min-w-[12rem]", "max-[932px]:min-w-[11.5rem]", "max-[868px]:min-w-[10.5rem]",  "max-[478px]:min-w-[12rem]", "max-[460px]:min-w-[11rem]", "max-[428px]:min-w-[10rem]", "max-[400px]:min-w-[9rem]", "max-[384px]:min-w-[8rem]", "max-[932px]:p-3.5", "max-[400px]:p-3", "max-[384px]:p-2","flex-wrap");
+    card.classList.add("hover:bg-slate-600","bg-slate-500", "list-none", "text-white","py-5", "px-4", "text-center", "rounded","min-w-49", "max-[1034px]:min-w-[12rem]", "max-[932px]:min-w-[11.5rem]", "max-[868px]:min-w-[10.5rem]",  "max-[478px]:min-w-[12rem]", "max-[460px]:min-w-[11rem]", "max-[428px]:min-w-[10rem]", "max-[400px]:min-w-[9rem]", "max-[384px]:min-w-[8rem]", "max-[932px]:p-3.5", "max-[400px]:p-3", "max-[384px]:p-2","flex-wrap");
     card.innerHTML =  `<h3 class="font-bold text-2xl">${element.dt_txt.split(" ")[0]}</h3>
                 <img src="icons/${element.weather[0].icon}.png" class="w-14 max-w-16 mt-1.5 inline drop-shadow-[0_0_10px_rgba(255,255,255,0.6)]" alt="weather-icon">
                 <h4 class="font-medium mt-3">Temp: ${element.main.temp} °C</h4>
