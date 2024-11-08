@@ -94,7 +94,6 @@ const weatherDetails = (lat,lon, pname) => {
     fetch(URL)
     .then(results=>results.json())
     .then(result => {
-        console.log(result);
 
         if(!pname) {
             pname = result.city.name; 
@@ -111,8 +110,6 @@ const weatherDetails = (lat,lon, pname) => {
             }
             return false;
         })
-        console.log(collectDays)
-        console.log(batchForecast)
         
         cardArea.innerHTML= "";
         currentweather.innerHTML= "";
