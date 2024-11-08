@@ -104,7 +104,7 @@ const weatherDetails = (lat,lon, pname) => {
             const date = new Date(terms.dt_txt);
             const day = date.getDate();
             const hour = date.getHours();
-            if(!collectDays.includes(day) && (hour === 6 || hour === 9 || hour === 12 || hour === 15 || hour === 18 || hour === 21)){
+            if(!collectDays.includes(day) && (hour ===3 || hour === 6 || hour === 9 || hour === 12 || hour === 15 || hour === 18 || hour === 21)){
                 collectDays.push(day) ;
                 return true;
             }
@@ -166,9 +166,9 @@ place.addEventListener("keyup", (e) => {
 }})
 
 document.addEventListener("DOMContentLoaded", () => {
-    const defaultCity = "Jakarta";
-    const lat = -6.2088;
-    const lon = 106.8456; 
+    const defaultCity = "Tokyo";
+    const lat = 35.6895;
+    const lon = 139.6917; 
     weatherDetails(lat, lon, defaultCity);
 
 
