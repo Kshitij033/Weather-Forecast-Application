@@ -71,7 +71,7 @@ const currentWeatherCard = (element,pname)=>{
     
     const icon = document.createElement("div");
     icon.id = "icon"
-    icon.classList.add("max-w-28", "max-[496px]:ml-10", "flex", "flex-col", "justify-center","items-center");
+    icon.classList.add("max-w-28", "max-[496px]:ml-5", "flex", "flex-col", "justify-center","items-center");
     icon.innerHTML = `<img src="./icons/${element.weather[0].icon}.svg" class="w-14 justify-self-center drop-shadow-[0_0_10px_rgba(255,255,255,1)]" alt="weather-icon">
                     <h4 class="font-medium mt-3 text-center capitalize">${element.weather[0].description}</h4>`;
     
@@ -86,12 +86,16 @@ const currentWeatherCard = (element,pname)=>{
 const weatherCard = (element)=>{
     const card = document.createElement("li");
     card.id = "card";
-    card.classList.add("hover:bg-slate-700","bg-slate-600", "list-none", "text-white","py-5", "px-4", "text-center", "rounded","min-w-44", "min-[1680px]:min-w-[12rem]", "min-[1600px]:min-w-[11.5rem]", "max-[1034px]:min-w-[10.5rem]", "max-[768px]:min-w-[10rem]", "max-[480px]:min-w-[9rem]", "max-[768px]:p-3", "max-[480px]:p-2.5", "max-[400px]:p-2", "flex-wrap");
-    card.innerHTML =  `<h3 class="font-bold text-2xl">${element.dt_txt.split(" ")[0]}</h3>
+    card.classList.add("backdrop-blur-lg","bg-black/40", "hover:bg-black/50", "list-none", "text-white", "text-center", "rounded","min-w-44", "min-[1680px]:min-w-[12rem]", "min-[1600px]:min-w-[11.5rem]", "max-[1034px]:min-w-[10.5rem]", "max-[768px]:min-w-[10rem]", "max-[480px]:min-w-[9rem]", "flex-wrap");
+    card.innerHTML =  `<div class="backdrop-blur-sm py-5 px-4 m-0 rounded bg-black/30 hover:bg-black/40 max-[768px]:p-3 max-[480px]:p-2.5 max-[400px]:p-2"><h3 class="font-bold text-2xl">${element.dt_txt.split(" ")[0]}</h3>
                 <img src="./icons/${element.weather[0].icon}.svg" class="w-14 max-w-16 mt-1.5 inline drop-shadow-[0_0_10px_rgba(30,30,30)]" alt="weather-icon">
                 <h4 class="font-medium mt-3">Temp: ${element.main.temp} °C</h4>
                 <h4 class="font-medium mt-3">Wind: ${element.wind.speed} M/S</h4>
-                <h4 class="font-medium mt-3">Humidity: ${element.main.humidity}%</h4>`;
+                <h4 class="font-medium mt-3">Humidity: ${element.main.humidity}%</h4></div>`;
+    
+    
+
+    card.style.backgroundImage = `url('./icons/${element.weather[0].icon}.jpg')`;
     cardArea.appendChild(card);
 };
 
