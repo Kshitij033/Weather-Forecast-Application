@@ -10,7 +10,7 @@ module.exports = {
         '49' : '12.5rem'
       },
       minHeight: {
-        '90vh' : '75vh'
+        '90vh' : '73.5vh'
       },
       gap: {
         '4.5' : '18.5px',

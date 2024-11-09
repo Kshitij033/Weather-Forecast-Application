@@ -671,7 +671,7 @@ video {
 }
 
 .min-h-90vh {
-  min-height: 75vh;
+  min-height: 73.5vh;
 }
 
 .min-h-screen {
@@ -873,11 +873,6 @@ video {
 .py-5 {
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
-}
-
-.py-6 {
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
 }
 
 .py-7 {
