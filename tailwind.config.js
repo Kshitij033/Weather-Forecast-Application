@@ -8,6 +8,9 @@ module.exports = {
       },
       minWidth: {
         '49' : '12.5rem'
+      },
+      gap: {
+        '5.5' : '22.5px'
       }
     },
   },
