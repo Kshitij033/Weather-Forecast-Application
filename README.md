@@ -1,4 +1,4 @@
-Weather Forecast Application 🌤️
+Weather Live 🌤️
 Overview
 
 This weather dashboard provides users with up-to-date weather forecasts for any city around the world. Users can search for cities, view the current and upcoming weather conditions, and save their search history for easy access. The dashboard also includes a feature to fetch the user's current location weather.
